@@ -27,7 +27,7 @@ class Book extends React.Component {
 
 Book.propTypes = {
   title: PropTypes.string.isRequired, 
-  authors: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
 }
 
 export default Book

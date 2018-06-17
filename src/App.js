@@ -5,13 +5,41 @@ import './App.css'
 
 class BooksApp extends React.Component {
   state = {
-    /**
-     * TODO: Instead of using this state variable to keep track of which page
-     * we're on, use the URL in the browser's address bar. This will ensure that
-     * users can use the browser's back and forward buttons to navigate between
-     * pages, as well as provide a good URL they can bookmark and share.
-     */
-    showSearchPage: false
+    showSearchPage: false,
+    booksInProgress: [
+      {
+        title: "Harry Potter",
+        author: "JK Rowling",
+      }, 
+      {
+        title: "To Kill a Mockingbird",
+        author: "Harper Lee",
+      }
+    ],
+    wantToRead: [
+      {
+        title: "Ender's Game",
+        author: "Orson Scott Card",
+      }, 
+      {
+        title: "1776",
+        author: "David McCullough",
+      }
+    ],
+    read: [
+      {
+        title: "The Hobbit",
+        author: "J.R.R. Tolkien",
+      },
+      {
+        title: "Oh, the Places You'll Go!",
+        author: "Seuss",
+      },
+      {
+        title: "The Adventures of Tom Sawyer",
+        author: "Mark Twain",
+      },
+    ],
   }
 
   render() {
@@ -49,18 +77,16 @@ class BooksApp extends React.Component {
                   <h2 className="bookshelf-title">Currently Reading</h2>
                   <div className="bookshelf-books">
                     <ol className="books-grid">
-                      <li>
-                        <Book
-                          title="Harry Potter"
-                          author="JK Rowling"
-                        />
-                      </li>
-                      <li>
-                        <Book
-                          title="To Kill a Mockingbird"
-                          author="Harper Lee"
-                        />
-                      </li>
+                      {
+                        this.state.wantToRead.map(book => (
+                          <li>
+                            <Book 
+                              title={book.title}
+                              author={book.author}
+                            />
+                          </li>
+                        ))
+                      }
                     </ol>
                   </div>
                 </div>
@@ -68,18 +94,16 @@ class BooksApp extends React.Component {
                   <h2 className="bookshelf-title">Want to Read</h2>
                   <div className="bookshelf-books">
                     <ol className="books-grid">
-                      <li>
-                        <Book
-                          title="Ender's Game"
-                          author="Orson Scott Card"
-                        />
-                      </li>
-                      <li>
-                        <Book
-                          title="1776"
-                          author="David McCullough"
-                        />
-                      </li>
+                      {
+                        this.state.booksInProgress.map(book => (
+                          <li>
+                            <Book 
+                              title={book.title}
+                              author={book.author}
+                            />
+                          </li>
+                        ))
+                      }
                     </ol>
                   </div>
                 </div>
@@ -87,24 +111,16 @@ class BooksApp extends React.Component {
                   <h2 className="bookshelf-title">Read</h2>
                   <div className="bookshelf-books">
                     <ol className="books-grid">
-                      <li>
-                        <Book
-                          title="The Hobbit"
-                          author="J.R.R. Tolkien"
-                        />
-                      </li>
-                      <li>
-                        <Book
-                          title="Oh, the Places You'll Go!"
-                          author="Seuss"
-                        />
-                      </li>
-                      <li>
-                        <Book
-                          title="The Adventures of Tom Sawyer"
-                          author="Mark Twain"
-                        />
-                      </li>
+                      {
+                        this.state.read.map(book => (
+                          <li>
+                            <Book 
+                              title={book.title}
+                              author={book.author}
+                            />
+                          </li>
+                        ))
+                      }
                     </ol>
                   </div>
                 </div>
