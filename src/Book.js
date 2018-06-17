@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 // import * as BooksAPI from './BooksAPI'
 
 class Book extends React.Component {
+  
   render() {
     return (
       <div className="book">
