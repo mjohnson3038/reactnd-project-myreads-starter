@@ -1,13 +1,45 @@
 import React from 'react'
-import { Link, Route } from 'react-router-dom'
-import ListShelves from './ListShelves.js'
-import SearchPage from './SearchPage.js'
-import './App.css'
+import BookShelf from './BookShelf.js'
 
-
-class BooksApp extends React.Component {
+class ListShelves extends React.Component {
   state = {
     showSearchPage: false,
+    books: {
+      currentlyReading: [
+        {
+          title: "Harry Potter",
+          author: "JK Rowling",
+        },
+        {
+          title: "To Kill a Mockingbird",
+          author: "Harper Lee",
+        }
+      ],
+      wantToRead: [
+        {
+          title: "Ender's Game",
+          author: "Orson Scott Card",
+        },
+        {
+          title: "1776",
+          author: "David McCullough",
+        }
+      ],
+      read: [
+        {
+          title: "The Hobbit",
+          author: "J.R.R. Tolkien",
+        },
+        {
+          title: "Oh, the Places You'll Go!",
+          author: "Seuss",
+        },
+        {
+          title: "The Adventures of Tom Sawyer",
+          author: "Mark Twain",
+        },
+      ],
+    },
   }
 
   getCurrentShelf = (book) => {
@@ -69,26 +101,35 @@ class BooksApp extends React.Component {
 
   render() {
     return (
-      <div className="app">
-        <Route path='/search' render={() => (
-          <SearchPage/>
-        )} />
-        <Route exact path='/' render={() => (
+      <div className="list-books">
+        <div className="list-books-title">
+          <h1>MyReads</h1>
+        </div>
+        <div className="list-books-content">
           <div>
-            <ListShelves />
-            <div className="open-search">
-              <Link
-                className='close-create-contact'
-                to='/search'
-              >
-                  Add a book
-              </Link>
-            </div>
+            <BookShelf
+              name="Currently Reading"
+              books={this.state.books.currentlyReading}
+              handleBookMove={this.finishMovingBook}
+              currentShelf="currentlyReading"
+            />
+            <BookShelf
+              name="Want to Read"
+              books={this.state.books.wantToRead}
+              handleBookMove={this.finishMovingBook}
+              currentShelf="wantToRead"
+            />
+            <BookShelf
+              name="Read"
+              books={this.state.books.read}
+              handleBookMove={this.finishMovingBook}
+              currentShelf="read"
+            />
           </div>
-        )} />
+        </div>
       </div>
     )
   }
 }
 
-export default BooksApp
+export default ListShelves
