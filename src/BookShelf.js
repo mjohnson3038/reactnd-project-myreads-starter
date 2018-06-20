@@ -4,10 +4,15 @@ import Book from './Book.js'
 
 
 class BookShelf extends React.Component {
+  passChangeShelf = (event) => {
+    event.preventDefault()
+    this.props.handleBookMove(event)
+  }
+
   render() {
     return (
       <div className="bookshelf">
-        <h2 className="bookshelf-title">Currently Reading</h2>
+        <h2 className="bookshelf-title">{this.props.name}</h2>
         <div className="bookshelf-books">
           <ol className="books-grid">
             {
@@ -16,7 +21,8 @@ class BookShelf extends React.Component {
                   <Book
                     title={book.title}
                     author={book.author}
-                    onChangeShelf={this.handleBookMove}
+                    onChangeShelf={this.passChangeShelf}
+                    currentShelf={this.props.currentShelf}
                   />
                 </li>
               ))
@@ -31,7 +37,7 @@ class BookShelf extends React.Component {
 Book.propTypes = {
   title: PropTypes.string.isRequired,
   books: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string.isRequired, 
+    title: PropTypes.string.isRequired,
     author: PropTypes.string.isRequired,
   })),
 }
