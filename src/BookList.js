@@ -16,8 +16,7 @@ class BookList extends React.Component {
           this.props.books.map(book => (
             <li key={book.title}>
               <Book
-                title={book.title}
-                author={book.author}
+                book={book}
                 onChangeShelf={this.passChangeBookPosition}
                 currentShelf={this.props.currentShelf}
               />
@@ -30,7 +29,6 @@ class BookList extends React.Component {
 }
 
 BookList.propTypes = {
-  title: PropTypes.string.isRequired,
   books: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
     author: PropTypes.string.isRequired,
