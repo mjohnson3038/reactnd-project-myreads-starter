@@ -12,6 +12,7 @@ class SearchPage extends React.Component {
           />
           <div className="search-books-input-wrapper">
             {/*
+
               NOTES: The search from BooksAPI is limited to a particular set of search terms.
               You can find these search terms here:
               https://github.com/udacity/reactnd-project-myreads-starter/blob/master/SEARCH_TERMS.md

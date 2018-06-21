@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types';
-import Book from './Book.js'
+import BookList from './BookList.js'
 
 
 class BookShelf extends React.Component {
@@ -14,28 +14,20 @@ class BookShelf extends React.Component {
       <div className="bookshelf">
         <h2 className="bookshelf-title">{this.props.name}</h2>
         <div className="bookshelf-books">
-          <ol className="books-grid">
-            {
-              this.props.books.map(book => (
-                <li key={book.title}>
-                  <Book
-                    title={book.title}
-                    author={book.author}
-                    onChangeShelf={this.passChangeShelf}
-                    currentShelf={this.props.currentShelf}
-                  />
-                </li>
-              ))
-            }
-          </ol>
+          <BookList
+            books={this.props.books}
+            currentShelf={this.props.currentShelf}
+            handleBookMove={this.props.handleBookMove}
+            onChangeShelf={this.passChangeShelf}
+          />
         </div>
       </div>
     );
   }
 }
 
-Book.propTypes = {
-  title: PropTypes.string.isRequired,
+BookShelf.propTypes = {
+  name: PropTypes.string.isRequired,
   books: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
     author: PropTypes.string.isRequired,
