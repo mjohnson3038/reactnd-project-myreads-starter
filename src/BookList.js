@@ -6,6 +6,7 @@ import Book from './Book.js'
 class BookList extends React.Component {
   passChangeBookPosition = (event, book) => {
     this.props.passChangeBookPosition(event, book)
+    console.log('passing props')
   }
 
   render() {

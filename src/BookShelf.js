@@ -6,7 +6,7 @@ import BookList from './BookList.js'
 class BookShelf extends React.Component {
   passChangeShelf = (event, book) => {
     event.preventDefault()
-    this.props.handleBookMove(event, book)
+    this.props.passChangeShelf(event, book)
   }
 
   render() {

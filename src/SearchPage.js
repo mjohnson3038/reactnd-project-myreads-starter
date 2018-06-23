@@ -30,8 +30,7 @@ class SearchPage extends React.Component {
 
   passAddBookToShelf = (event, book) => {
     console.log('hello world you want to add that book to the shelf?')
-    console.log(this)
-    console.log(event)
+    this.props.handleBookMove(event, book)
   }
 
   render() {

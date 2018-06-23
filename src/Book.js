@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 
 class Book extends React.Component {
   getBookContext = (event) => {
-    const targetShelf = event.target.value;
     const book = this.props.book;
     this.props.onChangeShelf(event, book)
+    console.log('getting book context')
   }
 
   getBookCover = () => {
