@@ -4,9 +4,9 @@ import BookList from './BookList.js'
 
 
 class BookShelf extends React.Component {
-  passChangeShelf = (event) => {
+  passChangeShelf = (event, book) => {
     event.preventDefault()
-    this.props.handleBookMove(event)
+    this.props.handleBookMove(event, book)
   }
 
   render() {
@@ -19,6 +19,7 @@ class BookShelf extends React.Component {
             currentShelf={this.props.currentShelf}
             handleBookMove={this.props.handleBookMove}
             onChangeShelf={this.passChangeShelf}
+            passChangeBookPosition={this.passChangeShelf}
           />
         </div>
       </div>
@@ -31,6 +32,9 @@ BookShelf.propTypes = {
   books: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
     author: PropTypes.string.isRequired,
+    imageLinks: PropTypes.objectOf({
+      thumbnail: PropTypes.string.isRequired,
+    }),
   })),
 }
 

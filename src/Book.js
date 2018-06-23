@@ -3,18 +3,32 @@ import PropTypes from 'prop-types';
 // import * as BooksAPI from './BooksAPI'
 
 class Book extends React.Component {
+  getBookContext = (event) => {
+    const targetShelf = event.target.value;
+    const book = this.props.book;
+    this.props.onChangeShelf(event, book)
+  }
+
+  getBookCover = () => {
+    if (this.props.book.imageLinks !== undefined){
+      return `url("${this.props.book.imageLinks.thumbnail}")`
+    } else {
+      return null
+    }
+  }
+
   render() {
     return (
       <div className="book">
         <div className="book-top">
-          <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url("${this.props.book.image}")` }}></div>
+          <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: this.getBookCover() }}></div>
           <div className="book-shelf-changer">
-            <select onChange={this.props.onChangeShelf} name={this.props.book.title} class={this.props.book.image} id={this.props.book.author} value={this.props.currentShelf}>
-              <option value="move" book={this.props.book} disabled>Move to...</option>
-              <option value="currentlyReading" book={this.props.book}>Currently Reading</option>
-              <option value="wantToRead" book={this.props.book}>Want to Read</option>
-              <option value="read" book={this.props.book}>Read</option>
-              <option value="none" book={this.props.book}>None</option>
+            <select onChange={this.getBookContext.bind(this)} name={this.props.book.title} value={this.props.currentShelf}>
+              <option value="move" disabled>Move to...</option>
+              <option value="currentlyReading">Currently Reading</option>
+              <option value="wantToRead">Want to Read</option>
+              <option value="read">Read</option>
+              <option value="none">None</option>
             </select>
           </div>
         </div>
@@ -26,8 +40,13 @@ class Book extends React.Component {
 }
 
 Book.propTypes = {
-  title: PropTypes.string.isRequired,
-  author: PropTypes.string.isRequired,
+  // title: PropTypes.string.isRequired,
+  // author: PropTypes.string.isRequired,
+  book: PropTypes.objectOf(PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    author: PropTypes.string.isRequired,
+    image: PropTypes.string,
+  })),
   onChangeShelf: PropTypes.func.isRequired,
 }
 

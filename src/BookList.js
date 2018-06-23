@@ -4,9 +4,8 @@ import Book from './Book.js'
 
 
 class BookList extends React.Component {
-  passChangeBookPosition = (event) => {
-    event.preventDefault()
-    this.props.handleBookMove(event)
+  passChangeBookPosition = (event, book) => {
+    this.props.passChangeBookPosition(event, book)
   }
 
   render() {
@@ -17,7 +16,7 @@ class BookList extends React.Component {
             <li key={book.title}>
               <Book
                 book={book}
-                onChangeShelf={this.passChangeBookPosition}
+                onChangeShelf={this.passChangeBookPosition.bind(this)}
                 currentShelf={this.props.currentShelf}
               />
             </li>
