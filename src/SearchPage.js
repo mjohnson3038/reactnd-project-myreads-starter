@@ -29,7 +29,6 @@ class SearchPage extends React.Component {
   }
 
   passAddBookToShelf = (event, book) => {
-    console.log('hello world you want to add that book to the shelf?')
     this.props.handleBookMove(event, book)
   }
 
@@ -60,6 +59,7 @@ class SearchPage extends React.Component {
             <BookList
               books={this.state.books}
               passChangeBookPosition={this.passAddBookToShelf.bind(this)}
+              currentState={this.props.currentState}
             />
         </div>
       </div>

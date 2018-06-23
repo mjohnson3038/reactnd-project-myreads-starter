@@ -18,6 +18,8 @@ class Book extends React.Component {
   }
 
   render() {
+    console.log(this.props.book)
+
     return (
       <div className="book">
         <div className="book-top">

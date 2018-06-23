@@ -6,7 +6,30 @@ import Book from './Book.js'
 class BookList extends React.Component {
   passChangeBookPosition = (event, book) => {
     this.props.passChangeBookPosition(event, book)
-    console.log('passing props')
+  }
+
+  getCurrentShelf = (bookToInsepct) => {
+    // when a book gets passed in through the SearchPage component, it doesn't have a currentShelf. We must check if it has a shelf, add it or set it to none.
+    if (this.props.currentShelf === undefined){
+      const shelvesOfBooks = this.props.currentState.books;
+      let currentShelf;
+      const shelves = Object.keys(shelvesOfBooks);
+      shelves.forEach((shelf) => {
+        if (shelvesOfBooks[shelf].filter(book => (
+          bookToInsepct.id === book.id
+        )).length > 0){
+          currentShelf = shelf
+        }
+      })
+
+      if (currentShelf === undefined){
+        return "none";
+      } else {
+        return currentShelf;
+      }
+    } else {
+      return this.props.currentShelf
+    }
   }
 
   render() {
@@ -18,7 +41,7 @@ class BookList extends React.Component {
               <Book
                 book={book}
                 onChangeShelf={this.passChangeBookPosition.bind(this)}
-                currentShelf={this.props.currentShelf}
+                currentShelf={this.getCurrentShelf(book)}
               />
             </li>
           ))
