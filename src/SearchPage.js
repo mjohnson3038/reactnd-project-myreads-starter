@@ -72,32 +72,32 @@ class SearchPage extends React.Component {
 SearchPage.propTypes = {
   handleBookMove: PropTypes.func.isRequired,
   currentState: PropTypes.shape({
-    books: PropTypes.arrayOf(PropTypes.shape({
+    books: PropTypes.shape({
       currentlyReading: PropTypes.arrayOf(PropTypes.shape({
         title: PropTypes.string.isRequired,
         id: PropTypes.string.isRequired,
-        author: PropTypes.string.isRequired,
-        imageLinks: PropTypes.objectOf({
+        author: PropTypes.arrayOf(PropTypes.string).isRequired,
+        imageLinks: PropTypes.shape({
           thumbnail: PropTypes.string,
         }),
       })),
       wantToRead: PropTypes.arrayOf(PropTypes.shape({
         title: PropTypes.string.isRequired,
         id: PropTypes.string.isRequired,
-        author: PropTypes.string.isRequired,
-        imageLinks: PropTypes.objectOf({
+        author: PropTypes.arrayOf(PropTypes.string).isRequired,
+        imageLinks: PropTypes.shape({
           thumbnail: PropTypes.string,
         }),
       })),
       read: PropTypes.arrayOf(PropTypes.shape({
         title: PropTypes.string.isRequired,
         id: PropTypes.string.isRequired,
-        author: PropTypes.string.isRequired,
-        imageLinks: PropTypes.objectOf({
+        author: PropTypes.arrayOf(PropTypes.string).isRequired,
+        imageLinks: PropTypes.shape({
           thumbnail: PropTypes.string,
         }),
       })),
-    })),
+    }),
   }),
 }
 

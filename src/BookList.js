@@ -56,34 +56,34 @@ BookList.propTypes = {
   currentShelf: PropTypes.string,
   // Shape of books' object depends on if it is being passed in through BookShelf or SearchPage
   books: PropTypes.arrayOf(PropTypes.object),
-  passChangeShelf: PropTypes.func.isRequired,
+  passChangeBookPosition: PropTypes.func.isRequired,
   currentState: PropTypes.shape({
-    books: PropTypes.arrayOf(PropTypes.shape({
+    books: PropTypes.shape({
       currentlyReading: PropTypes.arrayOf(PropTypes.shape({
         title: PropTypes.string.isRequired,
         id: PropTypes.string.isRequired,
-        author: PropTypes.string.isRequired,
-        imageLinks: PropTypes.objectOf({
+        author: PropTypes.arrayOf(PropTypes.string).isRequired,
+        imageLinks: PropTypes.shape({
           thumbnail: PropTypes.string,
         }),
       })),
       wantToRead: PropTypes.arrayOf(PropTypes.shape({
         title: PropTypes.string.isRequired,
         id: PropTypes.string.isRequired,
-        author: PropTypes.string.isRequired,
-        imageLinks: PropTypes.objectOf({
+        author: PropTypes.arrayOf(PropTypes.string).isRequired,
+        imageLinks: PropTypes.shape({
           thumbnail: PropTypes.string,
         }),
       })),
       read: PropTypes.arrayOf(PropTypes.shape({
         title: PropTypes.string.isRequired,
         id: PropTypes.string.isRequired,
-        author: PropTypes.string.isRequired,
-        imageLinks: PropTypes.objectOf({
+        author: PropTypes.arrayOf(PropTypes.string).isRequired,
+        imageLinks: PropTypes.shape({
           thumbnail: PropTypes.string,
         }),
       })),
-    })),
+    }),
   }),
 }
 
