@@ -1,5 +1,7 @@
 import React from 'react'
 import { Link, Route } from 'react-router-dom'
+
+import * as BooksAPI from './BooksAPI.js'
 import ListShelves from './ListShelves.js'
 import SearchPage from './SearchPage.js'
 import './App.css'
@@ -100,9 +102,12 @@ class BooksApp extends React.Component {
     });
     booksOnShelves[shelf] = updatedShelf
 
-    this.setState((currentState) => ({
-      books: booksOnShelves,
-    }))
+    BooksAPI.update(BooksAPI.get(bookToAdd.id), shelf)
+      .then(() => {
+        this.setState((currentState) => ({
+          books: booksOnShelves,
+        }))
+      })
   }
 
   finishMovingBook = (event, bookToMove) => {

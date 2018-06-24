@@ -8,7 +8,7 @@ import BookList from './BookList.js'
 
 class SearchPage extends React.Component {
   state = {
-    query: 'art',
+    query: '',
     books: [],
   }
 
