@@ -1,5 +1,7 @@
+import PropTypes from 'prop-types';
 import React from 'react'
 import BookShelf from './BookShelf.js'
+
 
 class ListShelves extends React.Component {
   passChangeShelf = (event, book) => {
@@ -38,6 +40,18 @@ class ListShelves extends React.Component {
       </div>
     )
   }
+}
+
+BookShelf.propTypes = {
+  books: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+    author: PropTypes.string.isRequired,
+    imageLinks: PropTypes.objectOf({
+      thumbnail: PropTypes.string,
+    }),
+  })),
+  handleBookMove: PropTypes.func.isRequired,
 }
 
 export default ListShelves

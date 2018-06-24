@@ -42,13 +42,8 @@ class Book extends React.Component {
 }
 
 Book.propTypes = {
-  // title: PropTypes.string.isRequired,
-  // author: PropTypes.string.isRequired,
-  book: PropTypes.objectOf(PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    author: PropTypes.string.isRequired,
-    image: PropTypes.string,
-  })),
+  // Shape of book's object depends on if it is being passed in through BookShelf or SearchPage
+  books: PropTypes.arrayOf(PropTypes.object),
   onChangeShelf: PropTypes.func.isRequired,
 }
 

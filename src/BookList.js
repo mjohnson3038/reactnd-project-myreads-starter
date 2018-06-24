@@ -11,6 +11,7 @@ class BookList extends React.Component {
   getCurrentShelf = (bookToInsepct) => {
     // when a book gets passed in through the SearchPage component, it doesn't have a currentShelf. We must check if it has a shelf, add it or set it to none.
     if (this.props.currentShelf === undefined){
+      // only happens when currentShelf is undefined, ie only need to pass in currentState through props through SearchPage
       const shelvesOfBooks = this.props.currentState.books;
       let currentShelf;
       const shelves = Object.keys(shelvesOfBooks);
@@ -52,10 +53,38 @@ class BookList extends React.Component {
 }
 
 BookList.propTypes = {
-  books: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    author: PropTypes.string.isRequired,
-  })),
+  currentShelf: PropTypes.string,
+  // Shape of books' object depends on if it is being passed in through BookShelf or SearchPage
+  books: PropTypes.arrayOf(PropTypes.object),
+  passChangeShelf: PropTypes.func.isRequired,
+  currentState: PropTypes.shape({
+    books: PropTypes.arrayOf(PropTypes.shape({
+      currentlyReading: PropTypes.arrayOf(PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        id: PropTypes.string.isRequired,
+        author: PropTypes.string.isRequired,
+        imageLinks: PropTypes.objectOf({
+          thumbnail: PropTypes.string,
+        }),
+      })),
+      wantToRead: PropTypes.arrayOf(PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        id: PropTypes.string.isRequired,
+        author: PropTypes.string.isRequired,
+        imageLinks: PropTypes.objectOf({
+          thumbnail: PropTypes.string,
+        }),
+      })),
+      read: PropTypes.arrayOf(PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        id: PropTypes.string.isRequired,
+        author: PropTypes.string.isRequired,
+        imageLinks: PropTypes.objectOf({
+          thumbnail: PropTypes.string,
+        }),
+      })),
+    })),
+  }),
 }
 
 export default BookList

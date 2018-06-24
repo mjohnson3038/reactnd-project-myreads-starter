@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types';
 import React from 'react'
+
 import * as BooksAPI from './BooksAPI.js'
 import BookList from './BookList.js'
 
@@ -65,6 +67,38 @@ class SearchPage extends React.Component {
       </div>
     )
   }
+}
+
+SearchPage.propTypes = {
+  handleBookMove: PropTypes.func.isRequired,
+  currentState: PropTypes.shape({
+    books: PropTypes.arrayOf(PropTypes.shape({
+      currentlyReading: PropTypes.arrayOf(PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        id: PropTypes.string.isRequired,
+        author: PropTypes.string.isRequired,
+        imageLinks: PropTypes.objectOf({
+          thumbnail: PropTypes.string,
+        }),
+      })),
+      wantToRead: PropTypes.arrayOf(PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        id: PropTypes.string.isRequired,
+        author: PropTypes.string.isRequired,
+        imageLinks: PropTypes.objectOf({
+          thumbnail: PropTypes.string,
+        }),
+      })),
+      read: PropTypes.arrayOf(PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        id: PropTypes.string.isRequired,
+        author: PropTypes.string.isRequired,
+        imageLinks: PropTypes.objectOf({
+          thumbnail: PropTypes.string,
+        }),
+      })),
+    })),
+  }),
 }
 
 export default SearchPage
