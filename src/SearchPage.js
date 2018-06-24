@@ -76,7 +76,7 @@ SearchPage.propTypes = {
       currentlyReading: PropTypes.arrayOf(PropTypes.shape({
         title: PropTypes.string.isRequired,
         id: PropTypes.string.isRequired,
-        author: PropTypes.arrayOf(PropTypes.string).isRequired,
+        authors: PropTypes.arrayOf(PropTypes.string).isRequired,
         imageLinks: PropTypes.shape({
           thumbnail: PropTypes.string,
         }),
@@ -84,7 +84,7 @@ SearchPage.propTypes = {
       wantToRead: PropTypes.arrayOf(PropTypes.shape({
         title: PropTypes.string.isRequired,
         id: PropTypes.string.isRequired,
-        author: PropTypes.arrayOf(PropTypes.string).isRequired,
+        authors: PropTypes.arrayOf(PropTypes.string).isRequired,
         imageLinks: PropTypes.shape({
           thumbnail: PropTypes.string,
         }),
@@ -92,7 +92,7 @@ SearchPage.propTypes = {
       read: PropTypes.arrayOf(PropTypes.shape({
         title: PropTypes.string.isRequired,
         id: PropTypes.string.isRequired,
-        author: PropTypes.arrayOf(PropTypes.string).isRequired,
+        authors: PropTypes.arrayOf(PropTypes.string).isRequired,
         imageLinks: PropTypes.shape({
           thumbnail: PropTypes.string,
         }),

@@ -12,7 +12,7 @@ class BooksApp extends React.Component {
         {
           title: "Wormwood",
           id: "C9Y0AAAAMAAJ",
-          author: ["Marie Corelli"],
+          authors: ["Marie Corelli"],
           imageLinks: {
             thumbnail: "http://books.google.com/books/content?id=C9Y0AAAAMAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
           }
@@ -20,7 +20,7 @@ class BooksApp extends React.Component {
         {
           title: "Open Source Web Development with LAMP",
           id: "HbUhv8aKIk4C",
-          author: ["James Lee", "Brent Ware"],
+          authors: ["James Lee", "Brent Ware"],
           imageLinks: {
             thumbnail: "http://books.google.com/books/content?id=HbUhv8aKIk4C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
           }
@@ -30,7 +30,7 @@ class BooksApp extends React.Component {
         {
           title: "Mobile Robotics in Healthcare",
           id: "jT__IKy9wTgC",
-          author: ["Nikos Katevas"],
+          authors: ["Nikos Katevas"],
           imageLinks: {
             thumbnail: "http://books.google.com/books/content?id=jT__IKy9wTgC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
           },
@@ -38,7 +38,7 @@ class BooksApp extends React.Component {
         {
           title: "Satire and allegory in Wynnere and Wastoure",
           id: "gnxbAAAAMAAJ",
-          author: ["Thomas Howard Bestul"],
+          authors: ["Thomas Howard Bestul"],
           imageLinks: {
             thumbnail: "http://books.google.com/books/content?id=gnxbAAAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
           },
@@ -48,7 +48,7 @@ class BooksApp extends React.Component {
         {
           title: "50 Games for Going Green",
           id: "P3nBuVzVGrEC",
-          author: ["Carol Scaini", "Carolyn Evans"],
+          authors: ["Carol Scaini", "Carolyn Evans"],
           imageLinks: {
             thumbnail: "http://books.google.com/books/content?id=P3nBuVzVGrEC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
           },
@@ -95,7 +95,7 @@ class BooksApp extends React.Component {
     const updatedShelf = this.state.books[shelf].concat({
       title: bookToAdd.title,
       id: bookToAdd.id,
-      author: bookToAdd.author,
+      authors: bookToAdd.authors,
       imageLinks: {thumbnail: bookToAdd.imageLinks.thumbnail},
     });
     booksOnShelves[shelf] = updatedShelf

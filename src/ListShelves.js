@@ -42,15 +42,33 @@ class ListShelves extends React.Component {
   }
 }
 
-BookShelf.propTypes = {
-  books: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired,
-    author: PropTypes.string.isRequired,
-    imageLinks: PropTypes.objectOf({
-      thumbnail: PropTypes.string,
-    }),
-  })),
+ListShelves.propTypes = {
+  books: PropTypes.shape({
+    currentlyReading: PropTypes.arrayOf(PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
+      authors: PropTypes.arrayOf(PropTypes.string).isRequired,
+      imageLinks: PropTypes.shape({
+        thumbnail: PropTypes.string,
+      }),
+    })),
+    wantToRead: PropTypes.arrayOf(PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
+      authors: PropTypes.arrayOf(PropTypes.string).isRequired,
+      imageLinks: PropTypes.shape({
+        thumbnail: PropTypes.string,
+      }),
+    })),
+    read: PropTypes.arrayOf(PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
+      authors: PropTypes.arrayOf(PropTypes.string).isRequired,
+      imageLinks: PropTypes.shape({
+        thumbnail: PropTypes.string,
+      }),
+    })),
+  }),
   handleBookMove: PropTypes.func.isRequired,
 }
 
