@@ -10,52 +10,9 @@ import './App.css'
 class BooksApp extends React.Component {
   state = {
     books: {
-      currentlyReading: [
-        {
-          title: "Wormwood",
-          id: "C9Y0AAAAMAAJ",
-          authors: ["Marie Corelli"],
-          imageLinks: {
-            thumbnail: "http://books.google.com/books/content?id=C9Y0AAAAMAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
-          }
-        },
-        {
-          title: "Open Source Web Development with LAMP",
-          id: "HbUhv8aKIk4C",
-          authors: ["James Lee", "Brent Ware"],
-          imageLinks: {
-            thumbnail: "http://books.google.com/books/content?id=HbUhv8aKIk4C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
-          }
-        }
-      ],
-      wantToRead: [
-        {
-          title: "Mobile Robotics in Healthcare",
-          id: "jT__IKy9wTgC",
-          authors: ["Nikos Katevas"],
-          imageLinks: {
-            thumbnail: "http://books.google.com/books/content?id=jT__IKy9wTgC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
-          },
-        },
-        {
-          title: "Satire and allegory in Wynnere and Wastoure",
-          id: "gnxbAAAAMAAJ",
-          authors: ["Thomas Howard Bestul"],
-          imageLinks: {
-            thumbnail: "http://books.google.com/books/content?id=gnxbAAAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
-          },
-        }
-      ],
-      read: [
-        {
-          title: "50 Games for Going Green",
-          id: "P3nBuVzVGrEC",
-          authors: ["Carol Scaini", "Carolyn Evans"],
-          imageLinks: {
-            thumbnail: "http://books.google.com/books/content?id=P3nBuVzVGrEC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
-          },
-        },
-      ],
+      currentlyReading: [],
+      wantToRead: [],
+      read: [],
     },
   }
 
