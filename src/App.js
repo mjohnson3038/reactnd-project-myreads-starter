@@ -17,31 +17,23 @@ class BooksApp extends React.Component {
   }
 
   getInitialState() {
-    // if the key exists in localStorage
+    // checking to see if 'books' can be found in localStorage
     if (localStorage.hasOwnProperty('books')) {
-      // get the 'books''s value from localStorage
+      // get the 'books's value from localStorage and turn the string from localStorage into JSON
       let value = localStorage.getItem('books');
-
       value = JSON.parse(value);
       this.setState({ 'books': value });
     }
   }
 
   componentDidMount() {
+    // this is a react lifecycle event. When the components are loaded onto the page, we load in the state (if it is there)
     this.getInitialState();
-
+    // and then we add an eventListener to the page/window, waiting to see when the components will be unloaded. This prevents us from saving the state to localStorage every single time it updates. It is important that we getInitialState in componentDidMount because the components will already technically have rendered once and state will have been set up. 
     window.addEventListener(
       "beforeunload",
       this.saveState.bind(this)
     )
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener(
-      "beforeunload",
-      this.saveState.bind(this)
-    )
-    this.saveState();
   }
 
   getCurrentShelf = (book) => {
@@ -109,6 +101,7 @@ class BooksApp extends React.Component {
   }
 
   saveState() {
+    // saving the books in the state object to localStorage
     localStorage.setItem('books', JSON.stringify(this.state['books']))
   }
 
