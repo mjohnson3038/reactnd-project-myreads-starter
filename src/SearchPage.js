@@ -41,6 +41,7 @@ class SearchPage extends React.Component {
           <Link
             className='close-search'
             to='/'
+            state={this.props.currentState}
           />
           <div className="search-books-input-wrapper">
             {/*

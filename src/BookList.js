@@ -38,7 +38,7 @@ class BookList extends React.Component {
       <ol className="books-grid">
         {
           this.props.books.map(book => (
-            <li key={book.title}>
+            <li key={book.id}>
               <Book
                 book={book}
                 onChangeShelf={this.passChangeBookPosition.bind(this)}

@@ -16,6 +16,34 @@ class BooksApp extends React.Component {
     },
   }
 
+  getInitialState() {
+    // if the key exists in localStorage
+    if (localStorage.hasOwnProperty('books')) {
+      // get the 'books''s value from localStorage
+      let value = localStorage.getItem('books');
+
+      value = JSON.parse(value);
+      this.setState({ 'books': value });
+    }
+  }
+
+  componentDidMount() {
+    this.getInitialState();
+
+    window.addEventListener(
+      "beforeunload",
+      this.saveState.bind(this)
+    )
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener(
+      "beforeunload",
+      this.saveState.bind(this)
+    )
+    this.saveState();
+  }
+
   getCurrentShelf = (book) => {
     let currentShelf;
     const shelves = Object.keys(this.state.books);
@@ -59,7 +87,7 @@ class BooksApp extends React.Component {
     });
     booksOnShelves[shelf] = updatedShelf
 
-    BooksAPI.update(BooksAPI.get(bookToAdd.id), shelf)
+    BooksAPI.update(bookToAdd.id, shelf)
       .then(() => {
         this.setState((currentState) => ({
           books: booksOnShelves,
@@ -78,6 +106,10 @@ class BooksApp extends React.Component {
     if (currentShelf !== null){
       this.deleteBookOnShelf(currentShelf, bookToMove)
     }
+  }
+
+  saveState() {
+    localStorage.setItem('books', JSON.stringify(this.state['books']))
   }
 
   render() {
@@ -100,6 +132,7 @@ class BooksApp extends React.Component {
               <Link
                 className='close-create-contact'
                 to='/search'
+                state={this.props.state}
               >
                   Add a book
               </Link>
