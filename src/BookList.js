@@ -34,10 +34,11 @@ class BookList extends React.Component {
   }
 
   render() {
+    const books = this.props.books === undefined ? [] : this.props.books
     return (
       <ol className="books-grid">
         {
-          this.props.books.map(book => (
+          books.map(book => (
             <li key={book.id}>
               <Book
                 book={book}
